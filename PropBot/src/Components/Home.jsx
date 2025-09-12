@@ -29,6 +29,7 @@ function Home() {
       .catch((err) => console.error("Error fetching data:", err));
   }, []);
 
+
   const features = [
     {
       title: "Buy & Sell Properties",
@@ -106,19 +107,27 @@ function Home() {
         </div>
 
         {/* API Data */}
-        
-        <div className=" w-full pl-16 pr-16 h-159 border-2 border-black">
+
+        <div className=" flex flex-col justify-between w-full pl-16 pr-16 h-159 ">
           <div className="flex justify-between items-center pb-14">
             <h1 className='font-bold text-bulee text-4xl'>Featured Property</h1>
             <span className='flex justify-center cursor-pointer py-[0.625rem] px-[1.25rem] border-2 border-r-bulee rounded-full' >See 268 New Projects <img src={tilt} alt="" /></span>
           </div>
           {/* imgs */}
-          <div className="flex w-155 h-116 border-2 border-black">
+          <div className="flex justify-between w-360 h-116 pr-10 ">
             <img src={rec7} alt="" className='w-auto h-auto' />
-            <img src={rec8} alt="" className='w-77 h-118 ' />
-            <img src={rec9} alt="" className='w-77 h-57 ' />
-            <img src={rec10} alt="" className='w-77 h-57 ' />
+            <img src={rec8} alt="" className='w-77 h-116 ' />
+            <div className="flex flex-col gap-4">
+              <img src={rec9} alt="" className='w-77 h-57 ' />
+              <img src={rec10} alt="" className='w-77 h-57 ' />
+
+            </div>
           </div>
+        </div>
+
+        {/* fetching data  */}
+        <div className="">
+
         </div>
 
       </div>
