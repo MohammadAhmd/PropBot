@@ -15,6 +15,11 @@ import rec7 from '../assets/Rectangle7.png'
 import rec8 from '../assets/Rectangle8.png'
 import rec9 from '../assets/Rectangle9.png'
 import rec10 from '../assets/Rectangle10.png'
+import tess1 from '../assets/Rectangle19.png'
+import tess2 from '../assets/Rectangle20.png'
+import money from '../assets/money.png'
+import trust from '../assets/trusted.png'
+import map from '../assets/et_map.png'
 
 // import { BarChart3, BarChart, Search, Shield, } from "lucide-react";
 
@@ -22,12 +27,7 @@ function Home() {
 
   const [properties, setProperties] = useState([]);
 
-  useEffect(() => {
-    fetch("https://68b826bcb715405043274639.mockapi.io/api/properties/PropertyListing")
-      .then((res) => res.json())
-      .then((data) => setProperties(data))
-      .catch((err) => console.error("Error fetching data:", err));
-  }, []);
+
 
 
   const features = [
@@ -106,8 +106,7 @@ function Home() {
           </div>
         </div>
 
-        {/* API Data */}
-
+        {/* Features */}
         <div className=" flex flex-col justify-between w-full pl-16 pr-16 h-159 ">
           <div className="flex justify-between items-center pb-14">
             <h1 className='font-bold text-bulee text-4xl'>Featured Property</h1>
@@ -126,10 +125,62 @@ function Home() {
         </div>
 
         {/* fetching data  */}
-        <div className="">
-
+        <div className="flex flex-col justify-between w-full h-169 mt-15 border-2 border-black">
+          <div className="flex justify-between items-center pl-12 pr-12">
+            <h1 className='font-bold text-bulee text-4xl'>Best Properties Available For Sale</h1><br />
+            <p className='text-left w-140 relative right-151 top-15 text-xl' >Browse our top-rated properties for rent, featuring premium listings tailored to your needs. Find your dream home today!</p>
+            <button className='rounded-4xl w-60 h-14 bg-bulee relative top-4 text-white font-bold cursor-pointer'>View More Properties</button>
+          </div>
         </div>
 
+        {/* fetching data  */}
+        <div className="flex flex-col justify-between w-full h-169 mt-15 border-2 border-black">
+          <div className="flex justify-between items-center pl-12 pr-12 ">
+            <h1 className='font-bold text-bulee text-4xl'>Find The Perfect Rental Home</h1>
+            <p className='text-left w-150 relative right-136 top-15 text-xl' >Browse our top-rated properties for rent, featuring premium listings tailored to your needs. Find your dream home today!</p>
+            <button className='rounded-4xl w-60 h-14 bg-bulee text-white relative top-4 font-bold cursor-pointer'>View All Rentals</button>
+          </div>
+        </div>
+
+        {/* searching */}
+        <div className="flex flex-col mt-5 w-full pl-10 pr-10 h-60 ">
+          <h1 className='font-bold text-[2.5rem] text-bulee'>Start Your Journey Today!</h1>
+          <p className='text-[#555555] mt-4'>Create a profile in seconds and find your ideal home.</p>
+          <div className="flex justify-around relative top-8 w-full h-25 grid-rows-4 pt-4 pb-4 ">
+            <input type="text" placeholder='Enter Your Name' className='flex justify-center text-left items-center cursor-pointer outline-none rounded-xl shadow-[0px_0.1px_1px_2px_rgba(0,0,0.4,0.12)] w-84 h-14 border-2 border-gre pl-8' name="" id="" />
+            <span className='flex justify-evenly items-center cursor-pointer rounded-xl w-84 h-14 border-2 shadow-[0px_0.1px_1px_2px_rgba(0,0,0.4,0.12)] border-gre '><input type='text' className='w-66 pl-6 h-full text-left ' placeholder='Select User Type' /><img src={down} alt="down" /></span>
+            <input type="text" placeholder='Enter Your Location' className='flex justify-center text-left items-center cursor-pointer outline-none rounded-xl w-84 h-14 border-2 shadow-[0px_0.1px_1px_2px_rgba(0,0,0.4,0.12)] border-gre pl-8' name="" id="" />
+            <button className='rounded-4xl w-60 h-14 bg-bulee text-white font-bold cursor-pointer'>Continue</button>
+          </div>
+        </div>
+
+        {/* Testimonials */}
+        <div className="flex flex-row justify-between w-full h-174 mt-15 p-8 ">
+          <div className=" w-[45%]">
+            <img src={tess1} className='w-126 h-132' alt="rectangle" />
+            <img src={tess2} className='w-102 h-101 relative -top-78 -right-51' alt="rectangle" />
+          </div>
+          <div className="flex-col flex items-center relative right-15 w-[50%]">
+            <h1 className='font-bold text-bulee text-center tracking-wider relative right-20 text-4xl'>We Provide Latest Properties <br /> For Our Valuable Clients</h1>
+            <div className="flex justify-evenly items-center relative w-[80%] h-[80%] pr-8 pl-8">
+              <div className="flex-col flex justify-between items-center w-[20%] h-[70%] pl-12 pb-10 ">
+                <img src={money} alt="" />
+                <img src={trust} alt="" />
+                <img src={map} alt="" />
+              </div>
+              <div className="w-[75%] h-full pl-4 pr-8 pb-8 pt-12">
+                <p className='font-bold text-2xl mt-4 mb-4 text-bulee'>Budget Friendly</p>
+                <span>Lorem ipsum dolor sit amet consectetur. Venenatis sed ac aenean tempus. Lectus quis pretium varius iaculis sed.</span>
+
+                <p className='font-bold text-2xl mt-6 mb-4 text-bulee'>Trusted By Thausand</p>
+                <span>Lorem ipsum dolor sit amet consectetur. Venenatis sed ac aenean tempus. Lectus quis pretium varius iaculis sed.</span>
+
+                <p className='font-bold text-2xl mt-6 mb-4 text-bulee'>Prime Location</p>
+                <span>Lorem ipsum dolor sit amet consectetur. Venenatis sed ac aenean tempus. Lectus quis pretium varius iaculis sed.</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )
