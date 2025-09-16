@@ -20,14 +20,48 @@ import tess2 from '../assets/Rectangle20.png'
 import money from '../assets/money.png'
 import trust from '../assets/trusted.png'
 import map from '../assets/et_map.png'
+import img15 from '../assets/Rectangle-15.png'
+import "slick-carousel/slick/slick.css";
+import rect1 from '../assets/Rect15.png'
+import loc from '../assets/lightLoca.png'
+import "slick-carousel/slick/slick-theme.css";
+import Api from './Pages/Api'
+
 
 // import { BarChart3, BarChart, Search, Shield, } from "lucide-react";
 
 function Home() {
 
-  const [properties, setProperties] = useState([]);
+  const imga = {
+    title: "I found",
+    icon: <img src={loc} alt="" />
+
+  }
 
 
+  const [items, setItems] = useState([]);
+
+  const getData = async () => {
+    const respond = await fetch("https://68b826bcb715405043274639.mockapi.io/api/properties/PropertyListing", {
+      method: "Get",
+    });
+    return await respond.json()
+  }
+
+  useEffect(() => {
+    getData().then((post) => setItems(post))
+  }, [])
+
+
+
+  // useEffect(() => {
+  //   const fetchi =
+  //   fetch("https://68b826bcb715405043274639.mockapi.io/api/properties/PropertyListing")
+  //     .then((res) => res.json())
+  //     .then((data) => setItems(data))
+  //     .catch((err) => console.log(err));
+  //     console.log(fetchi)
+  // }, []);
 
 
   const features = [
@@ -53,6 +87,13 @@ function Home() {
     },
   ];
 
+  const imgg = [
+    {
+      title: "",
+      description: "Spacious 3BHK apartment in a prime location with modern amenities.",
+      image: <img src={img15} alt='img15' />
+    }
+  ]
 
 
   return (
@@ -125,20 +166,104 @@ function Home() {
         </div>
 
         {/* fetching data  */}
-        <div className="flex flex-col justify-between w-full h-169 mt-15 border-2 border-black">
+        <div className="flex flex-col justify-around w-full h-169 mt-15 ">
           <div className="flex justify-between items-center pl-12 pr-12">
             <h1 className='font-bold text-bulee text-4xl'>Best Properties Available For Sale</h1><br />
             <p className='text-left w-140 relative right-151 top-15 text-xl' >Browse our top-rated properties for rent, featuring premium listings tailored to your needs. Find your dream home today!</p>
             <button className='rounded-4xl w-60 h-14 bg-bulee relative top-4 text-white font-bold cursor-pointer'>View More Properties</button>
           </div>
+
+          {/* <div className="flex gap-8 pl-6"> */}
+          {/* <div className="flex flex-col bg-[#F1F1F1] justify-evenly items-center w-86 h-106  rounded-xl">
+              <img src={rect1} alt="" />
+              <div className=" w-82 h-[48%] ">
+                <img src={imga.icon} alt="" />
+                <div className="flex flex-row justify-between items-center pl-4 pr-4">
+                  <p className="text-gray-500 text-sm  flex items-center flex-row gap-2">
+                    <img src={loc} alt="" />New York, NY</p>
+                  <p className=""> ⭐4.5/5</p>
+                </div>
+                <p className="text-gray-700 pl-4 pr-5 ml-1 mr-4 gap-1 mt-4 text-base font-semibold">Spacious 3BHK apartment in a prime location with modern amenities.</p>
+                <div className="flex flex-row justify-between items-center  mt-4 pl-2 pr-2">
+                  <button className='rounded-4xl w-40 h-10 bg-bulee text-white relative  font-bold cursor-pointer'>View All Rentals</button>
+                  <p className="font-bold ">$100000</p>
+
+                </div>
+              </div>
+            </div> */}
+
+          <div className="flex flex-row justify-between items-center w-full overflow-x-auto gap-4 pl-4">
+            {/* <Api /> */}
+            {/* <div className="flex overflow-x-auto gap-4 "> */}
+
+            {items.map((item) => (
+              <div
+                key={item.id}
+                className="flex flex-col bg-[#F1F1F1] justify-evenly items-center w-92 p-4 h-106  rounded-xl">
+
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-40 object-cover rou nded-lg mb-3" />
+
+                <div className="flex flex-row justify-between items-center  gap-18  pl-2 pr-2">
+                  <p className="text-gray-500 text-sm flex items-center flex-row gap-2">
+                    <img src={loc} alt="" />{item.country}</p>
+                  <p className=""> ⭐4.5/5</p>
+                </div>
+
+                <p className="text-gray-700 pl-4 pr-5 ml-1 mr-4 gap-1 mt-4 text-base font-semibold">Spacious 3BHK apartment in a prime location with modern amenities.</p>
+
+                <div className="flex flex-row justify-between items-center gap-4  mt-4 pl-2 pr-2">
+                  <button className='rounded-4xl w-40 h-10 bg-bulee text-white relative  font-bold cursor-pointer'>View All Rentals</button>
+                  <p className="font-[400] text-2xl">$450,000</p>
+                </div>
+
+              </div>
+            ))}
+            {/* </div> */}
+          </div>
+          {/* </div> */}
         </div>
 
         {/* fetching data  */}
-        <div className="flex flex-col justify-between w-full h-169 mt-15 border-2 border-black">
+        <div className="flex flex-col justify-around w-full h-169 mt-15">
           <div className="flex justify-between items-center pl-12 pr-12 ">
             <h1 className='font-bold text-bulee text-4xl'>Find The Perfect Rental Home</h1>
             <p className='text-left w-150 relative right-136 top-15 text-xl' >Browse our top-rated properties for rent, featuring premium listings tailored to your needs. Find your dream home today!</p>
             <button className='rounded-4xl w-60 h-14 bg-bulee text-white relative top-4 font-bold cursor-pointer'>View All Rentals</button>
+          </div>
+
+          <div className="flex flex-row justify-between items-center w-full overflow-x-auto gap-4 pl-4">
+            {/* <Api /> */}
+            {/* <div className="flex overflow-x-auto gap-4 "> */}
+
+            {items.map((item) => (
+              <div
+                key={item.id}
+                className="flex flex-col bg-[#F1F1F1] justify-evenly items-center w-92 h-106 p-4 rounded-xl">
+
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-40 object-cover rou nded-lg mb-3" />
+
+                <div className="flex flex-row justify-between items-center  gap-18  pl-2 pr-2">
+                  <p className="text-gray-500 text-sm flex items-center flex-row gap-2">
+                    <img src={loc} alt="" />{item.country}</p>
+                  <p className=""> ⭐4.5/5</p>
+                </div>
+
+                <p className="text-gray-700 pl-4 pr-5 ml-1 mr-4 gap-1 mt-4 text-base font-semibold">Spacious 3BHK apartment in a prime location with modern amenities.</p>
+
+                <div className="flex flex-row justify-between items-center gap-4 mt-4 pl-2 pr-2">
+                  <button className='rounded-4xl w-40 h-10 bg-bulee text-white relative  font-bold cursor-pointer'>View All Rentals</button>
+                  <p className="font-[400] text-2xl">$450,000</p>
+                </div>
+
+              </div>
+            ))}
+            {/* </div> */}
           </div>
         </div>
 
